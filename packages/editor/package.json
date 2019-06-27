@@ -1,0 +1,17 @@
+{
+  "name": "template-editor",
+  "version": "0.0.1",
+  "description": "标准的模板编辑器，适用于 短信模板、微信模板 编辑",
+  "main": "editor/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@shuyun-ep-team",
+  "license": "ISC",
+  "dependencies": {
+    "@types/codemirror": "0.0.75",
+    "codemirror": "^5.48.0"
+  },
+  "devDependencies": {
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-react-hooks"
+  ],
+  "rulesDirectory": [
+    "src/"
+  ],
+  "rules": {
+    "member-access": false,
+    // 分号
+    "semicolon": true,
+    // 缩进
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "arrow-parens": false,
+    // 去除对象中的尾逗号
+    "trailing-comma": [
+      true,
+      "always"
+    ],
+    "max-classes-per-file": [
+      true,
+      5
+    ],
+    "max-file-line-count": [
+      true,
+      1000
+    ],
+    "curly": [
+      true,
+      "ignore-same-line"
+    ],
+    "max-line-length": [
+      true,
+      {
+        "limit": 120,
+        "ignore-pattern": "^import |^export {(.*?)}"
+      }
+    ],
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
+    "member-ordering": false,
+    "object-literal-sort-keys": false,
+    "object-literal-key-quotes": false,
+    "ordered-imports": false,
+    "one-line": false,
+    "jsx-no-multiline-js": false,
+    "jsx-self-close": false,
+    "jsx-no-lambda": false,
+    "jsx-alignment": false,
+    // 不允许 export default 写法
+    // "no-default-export": true,
+    // 字符串使用单引号
+    "quotemark": [
+      false,
+      "single"
+    ],
+    // 不允许在条件表达式中赋值，如：if(var a = 1)
+    "no-conditional-assignment": true,
+    // 不允许使用 new Number() 等用法，Number("1")可以使用
+    "no-construct": true,
+    "no-debugger": true,
+    // Warns if ‘super()’ appears twice in a constructor.
+    "no-duplicate-super": true,
+    // Disallows using the this keyword outside of classes.
+    "no-invalid-this": true,
+    // 禁止使用var申明变量
+    "no-var-keyword": true,
+    "jsx-wrap-multiline": false,
+    // 最大连续空行数
+    "no-consecutive-blank-lines": [
+      true,
+      3
+    ],
+    // 去除行尾空格
+    "no-trailing-whitespace": true,
+    // 变量名允许驼峰命名，不能使用TS关键字作为变量名
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock"
+    ],
+    "react-hooks-nesting": "error"
+  }
+}
