@@ -21,5 +21,8 @@
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
     "webpack-hot-middleware": "^2.24.3"
+  },
+  "dependencies": {
+    "@shuyun-ep-team/template-editor": "0.0.1"
   }
 }

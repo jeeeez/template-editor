@@ -1,4 +1,5 @@
-import { TemplateEditor } from '../../editor/src/index';
+// import { TemplateEditor } from '../../editor/src/index';
+import { TemplateEditor } from '@shuyun-ep-team/template-editor';
 
 
 const container = document.getElementById('editor')!;
