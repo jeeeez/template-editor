@@ -15,6 +15,7 @@ export class TemplateEditor {
     });
 
     this.instance = CodeMirror(container, {
+      value: options.value,
       mode
     });
 
@@ -36,16 +37,19 @@ export class TemplateEditor {
     document.eachLine(line => {
       const tokens = this.instance.getLineTokens((line as any).lineNo());
       tokens.forEach(token => {
-        if (token && token.state && token.state.mapping) {
+        if (token && token.type && token.state && token.state.mapping) {
+
           const line = token.state.line;
           const startPos = { line, ch: token.start };
           const endPos = { line, ch: token.end };
 
           const mapping = token.state.mapping;
 
-          const text = mapping && mapping.hasOwnProperty('text') ? mapping.text : token.string;
+          const text = mapping && mapping.hasOwnProperty('text') ?
+            (typeof mapping.text === 'string' ? mapping.text : mapping.text(token.string)) : token.string;
           const className = mapping && mapping.hasOwnProperty('className') ? mapping.className : 'cm-variable';
-          const tooltip = mapping && mapping.tooltip;
+          const tooltip = mapping && mapping.tooltip ?
+            (typeof mapping.tooltip === 'string' ? mapping.tooltip : mapping.tooltip(token.string)) : undefined;
 
           document.markText(startPos, endPos, {
             replacedWith: createSpanReplacementNode(text, className, tooltip)
@@ -85,7 +89,7 @@ function createSpanReplacementNode(context: string, className: string, tooltip?:
     $span.classList.add(className);
   }
   if (tooltip) {
-    $span.setAttribute('editor-tooltip', tooltip);
+    $span.setAttribute('data-editor-tooltip', tooltip);
   }
   return $span;
 }

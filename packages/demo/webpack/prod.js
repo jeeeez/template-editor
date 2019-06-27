@@ -7,27 +7,19 @@ const common = require('./common');
 
 
 module.exports = {
-  mode: 'development',
-  devtool: "line-source-map",
+  mode: 'production',
   entry: [
     path.resolve(__dirname, '../src/index.ts')
   ],
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'cache')
-  },
-  devServer: {
-    contentBase: ['./cache'],
-    hot: true
+    path: path.resolve(__dirname, '../dist')
   },
   plugins: [
-    new CleanWebpackPlugin(['cache']),
-    // new FriendlyErrorsWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"development"'
+        NODE_ENV: '"production"'
       }
     }),
     new HtmlWebpackPlugin({

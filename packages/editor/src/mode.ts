@@ -36,6 +36,7 @@ export function defineMode(config: IModeConfig) {
 
       token(stream, state: any) {
         if (state.tokenize === tokenBase && stream.eatSpace()) {
+          state.mapping = undefined;
           return null;
         }
 
