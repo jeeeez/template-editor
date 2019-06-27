@@ -19,8 +19,8 @@ export default {
           dest: 'dist/editor',
         },
         {
-          src: 'packages/editor/package.json',
-          dest: 'dist/editor'
+          src: 'package.json',
+          dest: 'dist'
         }
       ]
     }),
