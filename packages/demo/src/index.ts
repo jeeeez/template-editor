@@ -9,7 +9,7 @@ let latestCursor: CodeMirror.Position;
 
 const editor = new TemplateEditor(container, {
   value: '',
-  mappings: [
+  placeholders: [
     {
       type: 'variable',
       matchRegexp: /^nickname/,
@@ -40,6 +40,7 @@ const editor = new TemplateEditor(container, {
 
 // editor.onChange((input) => {
 //   console.log(input);
+//   console.log(editor.getTokens());
 // });
 
 editor.instance.focus();

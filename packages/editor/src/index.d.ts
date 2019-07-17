@@ -2,7 +2,7 @@ import CodeMirror from 'codemirror';
 
 type IStringFnc = (v: string) => string;
 
-export interface IMapping {
+export interface IPlaceholders {
   matchRegexp: RegExp;
   consumeRegexp?: RegExp;
   type: string;
@@ -14,13 +14,15 @@ export interface IMapping {
 
 export interface IEditorOption {
   value: string;
-  mappings: IMapping[];
+  placeholders: IPlaceholders[];
 }
 
 declare class TemplateEditor {
   constructor(container: HTMLElement, options: IEditorOption);
 
   public instance: CodeMirror.Editor;
+
+  public getTokens(): CodeMirror.Token[];
 
   public getValue(): string;
 

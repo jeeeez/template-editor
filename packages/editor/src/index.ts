@@ -11,7 +11,7 @@ export class TemplateEditor {
   constructor(container: HTMLElement, options: IEditorOption) {
 
     const mode = defineMode({
-      mappings: options.mappings
+      placeholders: options.placeholders
     });
 
     this.instance = CodeMirror(container, {
@@ -34,29 +34,36 @@ export class TemplateEditor {
       mark.clear();
     });
 
-    document.eachLine(line => {
-      const tokens = this.instance.getLineTokens((line as any).lineNo());
-      tokens.forEach(token => {
-        if (token && token.type && token.state && token.state.mapping) {
+    this.getTokens().forEach(token => {
+      if (token && token.type && token.state && token.state.placeholder) {
 
-          const line = token.state.line;
-          const startPos = { line, ch: token.start };
-          const endPos = { line, ch: token.end };
+        const line = token.state.line;
+        const startPos = { line, ch: token.start };
+        const endPos = { line, ch: token.end };
 
-          const mapping = token.state.mapping;
+        const placeholder = token.state.placeholder;
 
-          const text = mapping && mapping.hasOwnProperty('text') ?
-            (typeof mapping.text === 'string' ? mapping.text : mapping.text(token.string)) : token.string;
-          const className = mapping && mapping.hasOwnProperty('className') ? mapping.className : 'cm-variable';
-          const tooltip = mapping && mapping.tooltip ?
-            (typeof mapping.tooltip === 'string' ? mapping.tooltip : mapping.tooltip(token.string)) : undefined;
+        const text = placeholder && placeholder.hasOwnProperty('text') ?
+          (typeof placeholder.text === 'string' ? placeholder.text : placeholder.text(token.string)) : token.string;
+        const className = placeholder && placeholder.hasOwnProperty('className') ? placeholder.className : 'cm-variable';
+        const tooltip = placeholder && placeholder.tooltip ?
+          (typeof placeholder.tooltip === 'string' ? placeholder.tooltip : placeholder.tooltip(token.string)) : undefined;
 
-          document.markText(startPos, endPos, {
-            replacedWith: createSpanReplacementNode(text, className, tooltip)
-          });
-        }
-      });
+        document.markText(startPos, endPos, {
+          replacedWith: createSpanReplacementNode(text, className, tooltip)
+        });
+      }
     });
+  }
+
+  public getTokens() {
+    const tokens: CodeMirror.Token[] = [];
+    const document = this.instance.getDoc();
+    document.eachLine(line => {
+      const lineTokens = this.instance.getLineTokens((line as any).lineNo());
+      lineTokens.forEach(token => tokens.push(token));
+    });
+    return tokens;
   }
 
   public getValue() {

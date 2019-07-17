@@ -1,9 +1,9 @@
 import CodeMirror from 'codemirror';
-import { IMapping } from './index.d';
+import { IPlaceholders } from './index.d';
 
 
 interface IModeConfig {
-  mappings: IMapping[];
+  placeholders: IPlaceholders[];
 }
 
 let counter = 0;
@@ -15,12 +15,12 @@ export function defineMode(config: IModeConfig) {
 
     function tokenBase(stream: CodeMirror.StringStream, state: any) {
       state.line = (stream as any).lineOracle.line;
-      for (const mapping of config.mappings) {
-        if (stream.match(mapping.matchRegexp, false)) {
-          const consumeRegexp = mapping.consumeRegexp || mapping.matchRegexp;
+      for (const placeholder of config.placeholders) {
+        if (stream.match(placeholder.matchRegexp, false)) {
+          const consumeRegexp = placeholder.consumeRegexp || placeholder.matchRegexp;
           stream.match(consumeRegexp);
-          state.mapping = mapping;
-          return mapping.type;
+          state.placeholder = placeholder;
+          return placeholder.type;
         }
       }
 
@@ -36,7 +36,7 @@ export function defineMode(config: IModeConfig) {
 
       token(stream, state: any) {
         if (state.tokenize === tokenBase && stream.eatSpace()) {
-          state.mapping = undefined;
+          state.placeholder = undefined;
           return null;
         }
 
