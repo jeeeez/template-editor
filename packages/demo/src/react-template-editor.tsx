@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Codemirror from 'codemirror';
 // import { TemplateEditor, IPlaceholder } from '@shuyun-ep-team/template-editor';
-import { TemplateEditor, IPlaceholder } from '../../editor/src/index';
+import { TemplateEditor, IPlaceholder } from '../../editor/src';
 
 
 interface IProps {

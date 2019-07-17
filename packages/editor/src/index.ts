@@ -1,6 +1,7 @@
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
 import { defineMode } from './mode';
+export { IPlaceholder } from './index.d';
 import { IEditorOption } from './index.d';
 
 
