@@ -8,7 +8,7 @@ const container = document.getElementById('editor')!;
 let latestCursor: CodeMirror.Position;
 
 const editor = new TemplateEditor(container, {
-  value: '',
+  initialValue: '',
   placeholders: [
     {
       type: 'variable',

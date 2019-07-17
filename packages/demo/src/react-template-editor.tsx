@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Codemirror from 'codemirror';
-import { TemplateEditor, IPlaceholder } from '@shuyun-ep-team/template-editor';
-// import { TemplateEditor, IPlaceholder } from '../../editor/src/index';
+// import { TemplateEditor, IPlaceholder } from '@shuyun-ep-team/template-editor';
+import { TemplateEditor, IPlaceholder } from '../../editor/src/index';
 
 
 interface IProps {
-  value: string;
+  initialValue: string;
   placeholders: IPlaceholder[];
   onChange?(value: string, tokens?: Codemirror.Token[]): void;
 }
@@ -17,9 +17,9 @@ export class ReactTemplateEditor extends React.Component<IProps>{
   private editor!: TemplateEditor;
 
   public componentDidMount() {
-    const { value, placeholders, onChange } = this.props;
+    const { initialValue, placeholders, onChange } = this.props;
     this.editor = new TemplateEditor(this.$divRef.current, {
-      value,
+      initialValue,
       placeholders
     });
 

@@ -15,10 +15,12 @@ export class TemplateEditor {
     });
 
     this.instance = CodeMirror(container, {
-      value: options.value,
+      value: options.initialValue,
       mode
     });
 
+    // 初始化时需要Mark一次变量
+    this.replaceVariables();
     this.listenContentChange();
   }
 

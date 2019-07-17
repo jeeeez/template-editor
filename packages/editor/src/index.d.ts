@@ -13,7 +13,7 @@ export interface IPlaceholder {
 
 
 export interface IEditorOption {
-  value: string;
+  initialValue: string;
   placeholders: IPlaceholder[];
 }
 
