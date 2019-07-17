@@ -10,7 +10,8 @@ module.exports = {
   mode: 'development',
   devtool: "line-source-map",
   entry: [
-    path.resolve(__dirname, '../src/index.ts')
+    // path.resolve(__dirname, '../src/index.ts')
+    path.resolve(__dirname, '../src/react-index.tsx')
   ],
   output: {
     filename: 'index.js',

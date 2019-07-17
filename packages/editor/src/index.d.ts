@@ -2,7 +2,7 @@ import CodeMirror from 'codemirror';
 
 type IStringFnc = (v: string) => string;
 
-export interface IPlaceholders {
+export interface IPlaceholder {
   matchRegexp: RegExp;
   consumeRegexp?: RegExp;
   type: string;
@@ -14,7 +14,7 @@ export interface IPlaceholders {
 
 export interface IEditorOption {
   value: string;
-  placeholders: IPlaceholders[];
+  placeholders: IPlaceholder[];
 }
 
 declare class TemplateEditor {

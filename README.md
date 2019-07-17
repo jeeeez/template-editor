@@ -1,7 +1,6 @@
 #@shuyun-ep-team/template-editor
 > 标准的模板编辑器，适用于 短信模板、微信模板 编辑
 
-
 ## Usage
 ```javascript
 import { TemplateEditor } from '@shuyun-ep-team/template-editor';

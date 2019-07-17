@@ -1,9 +1,9 @@
 import CodeMirror from 'codemirror';
-import { IPlaceholders } from './index.d';
+import { IPlaceholder } from './index.d';
 
 
 interface IModeConfig {
-  placeholders: IPlaceholders[];
+  placeholders: IPlaceholder[];
 }
 
 let counter = 0;
@@ -18,8 +18,9 @@ export function defineMode(config: IModeConfig) {
       for (const placeholder of config.placeholders) {
         if (stream.match(placeholder.matchRegexp, false)) {
           const consumeRegexp = placeholder.consumeRegexp || placeholder.matchRegexp;
-          stream.match(consumeRegexp);
+          const matched = stream.match(consumeRegexp);
           state.placeholder = placeholder;
+          state.matchedPlaceholderValue = matched[1];
           return placeholder.type;
         }
       }
@@ -37,6 +38,7 @@ export function defineMode(config: IModeConfig) {
       token(stream, state: any) {
         if (state.tokenize === tokenBase && stream.eatSpace()) {
           state.placeholder = undefined;
+          state.matchedPlaceholderValue = undefined;
           return null;
         }
 

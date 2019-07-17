@@ -42,12 +42,13 @@ export class TemplateEditor {
         const endPos = { line, ch: token.end };
 
         const placeholder = token.state.placeholder;
+        const matchedPlaceholderValue = token.state.matchedPlaceholderValue;
 
         const text = placeholder && placeholder.hasOwnProperty('text') ?
-          (typeof placeholder.text === 'string' ? placeholder.text : placeholder.text(token.string)) : token.string;
+          (typeof placeholder.text === 'string' ? placeholder.text : placeholder.text(matchedPlaceholderValue)) : matchedPlaceholderValue;
         const className = placeholder && placeholder.hasOwnProperty('className') ? placeholder.className : 'cm-variable';
         const tooltip = placeholder && placeholder.tooltip ?
-          (typeof placeholder.tooltip === 'string' ? placeholder.tooltip : placeholder.tooltip(token.string)) : undefined;
+          (typeof placeholder.tooltip === 'string' ? placeholder.tooltip : placeholder.tooltip(matchedPlaceholderValue)) : undefined;
 
         document.markText(startPos, endPos, {
           replacedWith: createSpanReplacementNode(text, className, tooltip)
