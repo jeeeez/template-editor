@@ -1,6 +1,6 @@
 {
   "name": "@shuyun-ep-team/template-editor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "标准的模板编辑器，适用于 短信模板、微信模板 编辑",
   "main": "editor/index.js",
   "scripts": {
