@@ -1,6 +1,6 @@
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
-import 'codemirror/addon/scroll/simplescrollbars';
+require('codemirror/addon/scroll/simplescrollbars');
 import 'codemirror/addon/scroll/simplescrollbars.css';
 import { defineMode } from './mode';
 import { IEditorOption } from './index.d';
