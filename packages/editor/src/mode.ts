@@ -17,6 +17,7 @@ export function defineMode(config: IModeConfig) {
       state.line = (stream as any).lineOracle.line;
       for (const placeholder of config.placeholders) {
         if (stream.match(placeholder.matchRegexp, false)) {
+
           const consumeRegexp = placeholder.consumeRegexp || placeholder.matchRegexp;
           const matched = stream.match(consumeRegexp);
           state.placeholder = placeholder;

@@ -1,5 +1,5 @@
 # @shuyun-ep-team/template-editor
-A template editor usually used as `message editor` or `wechat message editor`.
+A `CodeMirror` based template editor usually used as `message editor` or `wechat message editor`.
 
 Features:
 
@@ -15,6 +15,7 @@ npm i @shuyun-ep-team/template-editor
 ## Usage
 ```typescript
 import { TemplateEditor } from '@shuyun-ep-team/template-editor';
+
 const editor = new TemplateEditor(container, {
   initialValue: 'Dear {{nickname}}...',
   placeholders: []

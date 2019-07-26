@@ -1,9 +1,9 @@
 import CodeMirror from 'codemirror';
-import 'codemirror/lib/codemirror.css';
+// import 'codemirror/lib/codemirror.css';
 require('codemirror/addon/scroll/simplescrollbars');
-import 'codemirror/addon/scroll/simplescrollbars.css';
+// import 'codemirror/addon/scroll/simplescrollbars.css';
 import { defineMode } from './mode';
-import { IEditorOption } from './index.d';
+import { IEditorOptions } from './index.d';
 import { createSpanReplacementNode } from './createSpanReplacementNode';
 export { createSpanReplacementNode } from './createSpanReplacementNode';
 
@@ -13,7 +13,7 @@ export class TemplateEditor {
 
   public instance!: CodeMirror.Editor;
 
-  constructor(container: HTMLElement, private options: IEditorOption) {
+  constructor(container: HTMLElement, private options: IEditorOptions) {
 
     const mode = defineMode({
       placeholders: options.placeholders

@@ -1,18 +1,15 @@
 import CodeMirror from 'codemirror';
 
-type IStringFnc = (v: string) => string;
-
 export interface IPlaceholder {
   matchRegexp: RegExp;
   consumeRegexp?: RegExp;
   type: string;
-  text?: string | IStringFnc;
+  text?: string | ((v: string) => string);
   className?: string;
 }
 
 
-export interface IEditorOption {
-  controlled?: boolean;
+export interface IEditorOptions {
   initialValue: string;
   placeholders: IPlaceholder[];
   lineWrapping?: boolean;
@@ -20,7 +17,7 @@ export interface IEditorOption {
 }
 
 declare class TemplateEditor {
-  constructor(container: HTMLElement, options: IEditorOption);
+  constructor(container: HTMLElement, options: IEditorOptions);
 
   public instance: CodeMirror.Editor;
 

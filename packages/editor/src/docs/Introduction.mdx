@@ -1,0 +1,84 @@
+---
+name: Introduction
+route: /
+---
+
+# Introduction
+
+A `CodeMirror` based template editor usually used as `message editor` or `wechat message editor`.
+
+Features:
+
++ Simple configuration
++ Support custom regularation Placeholders
++ No framework limts, which means you CAN use with any frameworks such as `React`、`Vue`、`Angular`
+
+
+## Install - CommonJS
+
+```bash
+npm i template-editor
+# or
+yarn add template-editor
+```
+
+Then use it in your code...
+
+```javascript
+import { TemplateEditor } from 'template-editor';
+
+const options: IEditorOptions = {
+  initialValue: 'Dear {{nickname}}...',
+  placeholders: []
+};
+
+const editor = new TemplateEditor(container, options);
+
+```
+
+## Arguments
+
+### `container`(required)
+
+The first argument `container` is a dom which holder the `TemplateEditor` instance, Support `div` only.
+
+
+
+### `options: IEditorOptions`(required)
+
+1. `options.initialValue`(required): The default value of the editor.
+2. `options.placeholders`(required): Array of `Placeholder`, the Type Definitions below is `IPlaceholder`
+3. `options.lineWrapping`(optional): A configuration of `CodeMirror`, default to `true`
+4. `options.createReplacementNode`(optional): A function return a `span` to display the matched `Placeholder`
+
+
+## Type Definitions
+
+### IPlaceholder
+
+```typescript
+interface IPlaceholder {
+  matchRegexp: RegExp;
+  consumeRegexp?: RegExp; // default to matchRegexp
+  type: string; // value of CodeMirror.Token.type
+  text?: string | ((v: string) => string); // display text of this placeholder
+  className?: string;
+}
+```
+
+
+### IEditorOptions
+The second argument of `TemplateEditor`
+
+```typescript
+interface IEditorOptions {
+  initialValue: string;
+  placeholders: IPlaceholder[];
+  lineWrapping?: boolean;
+  createReplacementNode?(
+    placeholder: IPlaceholder,
+    value?: string, // the real Value of the matched Placeholder. `matchRegexp(input)[1]`
+    input?: string // consumed string of the Placeholder
+  ): HTMLSpanElement;
+}
+```
