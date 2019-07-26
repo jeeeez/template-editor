@@ -7,7 +7,7 @@ import { TemplateEditor } from '@shuyun-ep-team/template-editor';
 
 const editor = new TemplateEditor(div, {
   placeholders: [
-    { type: 'variable', matchRegexp: /^nickname/, text: '微信昵称', className: 'cm-keyword', tooltip: '哈哈哈' },
+    { type: 'variable', matchRegexp: /^nickname/, text: '微信昵称', className: 'cm-keyword' },
     { type: 'topic', matchRegexp: /^#\S+#/, className: 'cm-keyword' }
   ]
 });

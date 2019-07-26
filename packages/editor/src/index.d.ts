@@ -8,13 +8,15 @@ export interface IPlaceholder {
   type: string;
   text?: string | IStringFnc;
   className?: string;
-  tooltip?: string | IStringFnc;
 }
 
 
 export interface IEditorOption {
+  controlled?: boolean;
   initialValue: string;
   placeholders: IPlaceholder[];
+  lineWrapping?: boolean;
+  createReplacementNode?(placeholder: IPlaceholder, value?: string, input?: string): HTMLSpanElement;
 }
 
 declare class TemplateEditor {

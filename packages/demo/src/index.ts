@@ -1,6 +1,8 @@
 import CodeMirror from 'codemirror';
 import { TemplateEditor } from '../../editor/src/index';
-// import { TemplateEditor } from '@shuyun-ep-team/template-editor';
+// import { IPlaceholder } from '../../editor/src/index.d';
+import { createSpanReplacementNode } from '../../editor/src/createSpanReplacementNode';
+
 
 
 const container = document.getElementById('editor')!;
@@ -9,13 +11,18 @@ let latestCursor: CodeMirror.Position;
 
 const editor = new TemplateEditor(container, {
   initialValue: '',
+  createReplacementNode(placeholder, value) {
+    const text = typeof placeholder.text === 'function' ? placeholder.text(value) : placeholder.text;
+    console.log(text);
+
+    return createSpanReplacementNode(text + 1, placeholder.className);
+  },
   placeholders: [
     {
       type: 'variable',
       matchRegexp: /^nickname/,
       text: '昵称',
-      className: 'cm-keyword',
-      tooltip: '我叫王大锤'
+      className: 'cm-keyword'
     },
     {
       type: 'variable',
@@ -27,13 +34,6 @@ const editor = new TemplateEditor(container, {
           ['#phoneNo#']: '手机号码',
           ['#Email#']: '电子邮箱',
         }[value] || 'Unknown Variable';
-      },
-      tooltip(value) {
-        return {
-          ['#date#']: `获奖时间：${new Date()}`,
-          ['#phoneNo#']: '手机号码：182xxxx1010',
-          ['#Email#']: '电子邮箱：junfeng.li@shuyun.com',
-        }[value] || '不识别的变量';
       }
     }]
 });
@@ -61,9 +61,3 @@ document.querySelectorAll('.btn-variable').forEach(btnVariable => {
 });
 
 
-container.addEventListener('mouseover', (evt) => {
-  const tooltip = (evt.target as HTMLElement).getAttribute('data-editor-tooltip');
-  if (tooltip) {
-    console.log(tooltip);
-  }
-});

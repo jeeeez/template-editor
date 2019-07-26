@@ -9,7 +9,7 @@ interface IModeConfig {
 let counter = 0;
 
 export function defineMode(config: IModeConfig) {
-  const name = `CustomMode-${++counter}`;
+  const name = `Template-Editor-${++counter}-${Date.now()}`;
 
   CodeMirror.defineMode(name, () => {
 
@@ -20,7 +20,7 @@ export function defineMode(config: IModeConfig) {
           const consumeRegexp = placeholder.consumeRegexp || placeholder.matchRegexp;
           const matched = stream.match(consumeRegexp);
           state.placeholder = placeholder;
-          state.matchedPlaceholderValue = matched[1];
+          state.matchedValue = matched[1];
           return placeholder.type;
         }
       }
@@ -38,7 +38,7 @@ export function defineMode(config: IModeConfig) {
       token(stream, state: any) {
         if (state.tokenize === tokenBase && stream.eatSpace()) {
           state.placeholder = undefined;
-          state.matchedPlaceholderValue = undefined;
+          state.matchedValue = undefined;
           return null;
         }
 

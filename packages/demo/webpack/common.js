@@ -13,7 +13,8 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
-      '@': path.resolve('../src')
+      '@': path.resolve('../src'),
+      '@shuyun-ep-team/template-editor': path.resolve('../../editor/src')
     }
   },
   module: {

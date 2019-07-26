@@ -28,6 +28,5 @@
     "webpack-hot-middleware": "^2.24.3"
   },
   "dependencies": {
-    "@shuyun-ep-team/template-editor": "^0.1.1"
   }
 }

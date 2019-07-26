@@ -1,37 +1,54 @@
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
+import 'codemirror/addon/scroll/simplescrollbars';
+import 'codemirror/addon/scroll/simplescrollbars.css';
 import { defineMode } from './mode';
-export { IPlaceholder } from './index.d';
 import { IEditorOption } from './index.d';
+import { createSpanReplacementNode } from './createSpanReplacementNode';
+export { createSpanReplacementNode } from './createSpanReplacementNode';
+
 
 
 export class TemplateEditor {
 
   public instance!: CodeMirror.Editor;
 
-  constructor(container: HTMLElement, options: IEditorOption) {
+  constructor(container: HTMLElement, private options: IEditorOption) {
 
     const mode = defineMode({
       placeholders: options.placeholders
     });
 
+    const lineWrapping = 'lineWrapping' in options ? !!options.lineWrapping : true;
+
     this.instance = CodeMirror(container, {
-      value: options.initialValue,
-      mode
+      mode,
+      lineWrapping,
+      scrollbarStyle: 'simple',
+      value: options.initialValue || ''
     });
 
-    // 初始化时需要Mark一次变量
+
     this.replaceVariables();
     this.listenContentChange();
   }
 
   private listenContentChange() {
+    // if (!this.options.controlled) {
+    //   this.instance.on('beforeChange', (_R, change) => {
+    //     console.log(change,_R);
+    //     change.cancel();
+    //   });
+    // }
+
     this.instance.on('change', () => {
       this.replaceVariables();
     });
   }
 
   private replaceVariables() {
+    const { createReplacementNode } = this.options;
+
     const document = this.instance.getDoc();
     document.getAllMarks().forEach(mark => {
       mark.clear();
@@ -45,16 +62,19 @@ export class TemplateEditor {
         const endPos = { line, ch: token.end };
 
         const placeholder = token.state.placeholder;
-        const matchedPlaceholderValue = token.state.matchedPlaceholderValue;
+        const matchedValue = token.state.matchedValue;
 
-        const text = placeholder && placeholder.hasOwnProperty('text') ?
-          (typeof placeholder.text === 'string' ? placeholder.text : placeholder.text(matchedPlaceholderValue)) : matchedPlaceholderValue;
-        const className = placeholder && placeholder.hasOwnProperty('className') ? placeholder.className : 'cm-variable';
-        const tooltip = placeholder && placeholder.tooltip ?
-          (typeof placeholder.tooltip === 'string' ? placeholder.tooltip : placeholder.tooltip(matchedPlaceholderValue)) : undefined;
+        const replacedWith = createReplacementNode ?
+          createReplacementNode(placeholder, matchedValue, token.string) :
+          (() => {
+            const text = placeholder && placeholder.hasOwnProperty('text') ?
+              (typeof placeholder.text === 'string' ? placeholder.text : placeholder.text(matchedValue)) : matchedValue;
+            const className = placeholder && placeholder.hasOwnProperty('className') ? placeholder.className : 'cm-variable';
+            return createSpanReplacementNode(text, className);
+          })();
 
         document.markText(startPos, endPos, {
-          replacedWith: createSpanReplacementNode(text, className, tooltip)
+          replacedWith
         });
       }
     });
@@ -89,18 +109,4 @@ export class TemplateEditor {
   //   const cursor = document.getCursor();
   //   document.replaceRange(input, cursor, cursor);
   // }
-}
-
-
-// 创建用以替换 token 的 Element
-function createSpanReplacementNode(context: string, className: string, tooltip?: string) {
-  const $span = document.createElement('span');
-  $span.innerHTML = context;
-  if (className) {
-    $span.classList.add(className);
-  }
-  if (tooltip) {
-    $span.setAttribute('data-editor-tooltip', tooltip);
-  }
-  return $span;
 }
