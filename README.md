@@ -1,14 +1,22 @@
-#@shuyun-ep-team/template-editor
-> 标准的模板编辑器，适用于 短信模板、微信模板 编辑
+# @shuyun-ep-team/template-editor
+A template editor usually used as `message editor` or `wechat message editor`.
+
+Features:
+
++ Simple configuration
++ Support custom regularation `Placeholder`s
++ No framework limts, which means you CAN use with any frameworks such as `React`、`Vue`、`Angular`
+
+## Install
+```bash
+npm i @shuyun-ep-team/template-editor
+```
 
 ## Usage
-```javascript
+```typescript
 import { TemplateEditor } from '@shuyun-ep-team/template-editor';
-
-const editor = new TemplateEditor(div, {
-  placeholders: [
-    { type: 'variable', matchRegexp: /^nickname/, text: '微信昵称', className: 'cm-keyword' },
-    { type: 'topic', matchRegexp: /^#\S+#/, className: 'cm-keyword' }
-  ]
+const editor = new TemplateEditor(container, {
+  initialValue: 'Dear {{nickname}}...',
+  placeholders: []
 });
 ```

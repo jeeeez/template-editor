@@ -24,7 +24,7 @@ const DefaultPlaceholders = [{
 }];
 
 function ReactTemplateEditorWrapper() {
-  const [editorRefObj] = React.useState({ editorRef: null });
+  const [editorRefObj] = React.useState(React.createRef<ReactTemplateEditor>());
   const [value] = React.useState('{{123}} {{124}}');
   const [placeholders] = React.useState(DefaultPlaceholders);
 
@@ -36,13 +36,15 @@ function ReactTemplateEditorWrapper() {
         className: 'cm-keyword',
         text: 'age'
       });
-      editorRefObj.editorRef.forceUpdateEditor();
+      editorRefObj.current.forceUpdateEditor();
     }, 2000);
   }, []);
 
+
+
   return (
     <ReactTemplateEditor
-      ref={r => editorRefObj.editorRef = r}
+      ref={editorRefObj}
       value={value}
       placeholders={placeholders}
     />);
