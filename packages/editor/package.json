@@ -1,0 +1,14 @@
+{
+  "name": "@template-editor/native",
+  "version": "0.0.1",
+  "description": "template-editor implemention in React",
+  "main": "es/index.js",
+  "scripts": {
+    "build": "rm -rf dist/ && rollup -c rollup/config.js",
+    "publishToNPM": "node ./scripts/publish.js"
+  },
+  "dependencies": {
+    "@types/codemirror": "0.0.75",
+    "codemirror": "^5.48.0"
+  }
+}

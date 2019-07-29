@@ -1,7 +1,7 @@
 import CodeMirror from 'codemirror';
-// import 'codemirror/lib/codemirror.css';
+import 'codemirror/lib/codemirror.css';
 require('codemirror/addon/scroll/simplescrollbars');
-// import 'codemirror/addon/scroll/simplescrollbars.css';
+import 'codemirror/addon/scroll/simplescrollbars.css';
 import { defineMode } from './mode';
 import { IEditorOptions } from './index.d';
 import { createSpanReplacementNode } from './createSpanReplacementNode';

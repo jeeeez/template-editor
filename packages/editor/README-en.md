@@ -1,4 +1,4 @@
-# template-editor
+# @template-editor/native
 A `CodeMirror` based template editor usually used as `message editor` or `wechat message editor`.
 
 Features:
@@ -9,12 +9,12 @@ Features:
 
 ## Install
 ```bash
-npm i template-editor
+npm i @template-editor/native
 ```
 
 ## Usage
 ```typescript
-import { TemplateEditor } from 'template-editor';
+import { TemplateEditor } from '@template-editor/native';
 
 const editor = new TemplateEditor(container, {
   initialValue: 'Dear {{nickname}}...',

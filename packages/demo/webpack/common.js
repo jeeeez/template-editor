@@ -8,13 +8,15 @@ const tslintConfigStr = fs.readFileSync(tslintConfigPath).toString();
 const { compilerOptions } = JSON.parse(stripJsonComments(tslintConfigStr));
 
 
+const resolvePath = (relativePath) => path.resolve(__dirname, relativePath);
+
 
 module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
-      '@': path.resolve('../src'),
-      '@shuyun-ep-team/template-editor': path.resolve('../../editor/src')
+      '@template-editor/native': resolvePath('../../editor/src'),
+      '@template-editor/react': resolvePath('../../react-template-editor/src')
     }
   },
   module: {

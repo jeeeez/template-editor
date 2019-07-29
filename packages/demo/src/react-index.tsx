@@ -1,20 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { ReactTemplateEditor } from './react-template-editor';
+import { ReactTemplateEditor } from '@template-editor/react';
 
-// const variables = [{ id: 123, name: 'nickname' },{ id: 124, name: 'age' }];
-
-// const placeholders = [
-//   {
-//     type: 'variable',
-//     matchRegexp: /^\{\{(\d+)\}\}/,
-//     className: 'cm-keyword',
-//     text(value) {
-//       const variable = variables.find(item => String(item.id) === value);
-//       return variable ? variable.name : 'Unknown Variable';
-//     }
-//   }
-// ];
 
 const DefaultPlaceholders = [{
   type: 'variable',
@@ -24,7 +11,7 @@ const DefaultPlaceholders = [{
 }];
 
 function ReactTemplateEditorWrapper() {
-  const [editorRefObj] = React.useState(React.createRef<ReactTemplateEditor>());
+  const editorRefObj = React.useRef<typeof ReactTemplateEditor>(null);
   const [value] = React.useState('{{123}} {{124}}');
   const [placeholders] = React.useState(DefaultPlaceholders);
 
@@ -36,10 +23,11 @@ function ReactTemplateEditorWrapper() {
         className: 'cm-keyword',
         text: 'age'
       });
-      editorRefObj.current.forceUpdateEditor();
+      // console.log(editorRefObj.current);
+
+      editorRefObj.current!.forceUpdateEditor();
     }, 2000);
   }, []);
-
 
 
   return (
@@ -47,6 +35,7 @@ function ReactTemplateEditorWrapper() {
       ref={editorRefObj}
       value={value}
       placeholders={placeholders}
+      className='editor-instance'
     />);
 }
 
