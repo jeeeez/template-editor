@@ -18,14 +18,15 @@ axios.interceptors.response.use(function (response) {
 });
 
 
-const npmPackageName = '@template-editor/native';
+const npmPackageName = packageJson.name;
 
 // 获取最新版本号
 function getCurrentVersion() {
     return axios.get(`https://registry.npmjs.org/${npmPackageName}`).then(function (res) {
         return res['dist-tags'].latest;
     }).catch(function (err) {
-        throw err;
+        // throw err;
+        return '0.0.0';
     });
 }
 

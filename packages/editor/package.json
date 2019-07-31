@@ -1,6 +1,6 @@
 {
   "name": "@template-editor/native",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "description": "template-editor implemention in React",
   "main": "es/index.js",
   "module": "es/index.js",
@@ -21,7 +21,7 @@
     "type": "git",
     "url": "https://github.com/jeezlee/template-editor/tree/master/packages/editor"
   },
-  "devDependencies": {},
-  "author": "",
-  "license": "ISC"
+  "author": "Jeezlee",
+  "license": "MIT",
+  "gitHead": "bcd7e530bf9015da1610e64391188759c3d742ff"
 }
