@@ -25,7 +25,8 @@ function getCurrentVersion() {
     return axios.get(`https://registry.npmjs.org/${npmPackageName}`).then(function (res) {
         return res['dist-tags'].latest;
     }).catch(function (err) {
-        throw err;
+        // throw err;
+        return '0.0.0';
     });
 }
 
