@@ -1,6 +1,6 @@
 {
   "name": "@template-editor/react",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "template-editor implemention in React",
   "main": "index.js",
   "module": "es/index.js",
@@ -16,7 +16,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@template-editor/native": "^0.2.1"
+    "@template-editor/native": "^0.2.2"
   },
   "devDependencies": {
     "@types/codemirror": "0.0.75",
