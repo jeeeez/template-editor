@@ -25,7 +25,9 @@ export class TemplateEditor {
       mode,
       lineWrapping,
       scrollbarStyle: 'simple',
-      value: options.initialValue || ''
+      readOnly: options.disabled,
+      value: options.initialValue || '',
+      placeholder: options.placeholder
     });
 
 
