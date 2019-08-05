@@ -1,5 +1,5 @@
 # template-editor
-A `CodeMirror` based template editor usually used as `message editor` or `wechat message editor`.
+A `CodeMirror` based template editor usually used as `short message editor` or `wechat message editor`.
 
 Features:
 
@@ -18,6 +18,11 @@ import { TemplateEditor } from 'template-editor';
 
 const editor = new TemplateEditor(container, {
   initialValue: 'Dear {{nickname}}...',
-  placeholders: []
+  placeholders: [{
+    type: 'variable',
+    matchRegexp: /^\{\{(nickname)\}\}/,
+    className: 'cm-keyword',
+    text: 'Perter'
+  }]
 });
 ```

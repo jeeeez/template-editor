@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { ReactTemplateEditor } from '@template-editor/react';
+import { IImperativeHandles } from '@template-editor/react/index.d';
 
 
 const DefaultPlaceholders = [{
@@ -10,8 +10,9 @@ const DefaultPlaceholders = [{
   text: 'nickname'
 }];
 
-function ReactTemplateEditorWrapper() {
-  const editorRefObj = React.useRef<typeof ReactTemplateEditor>(null);
+
+export function ReactTemplateEditorWrapper() {
+  const editorRefObj = React.useRef<IImperativeHandles>(null);
   const [value] = React.useState('{{123}} {{124}}');
   const [placeholders] = React.useState(DefaultPlaceholders);
 
@@ -39,4 +40,3 @@ function ReactTemplateEditorWrapper() {
     />);
 }
 
-ReactDOM.render(<ReactTemplateEditorWrapper />, document.getElementById('editor'));

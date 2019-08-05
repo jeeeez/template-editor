@@ -19,22 +19,13 @@ export default {
     Object.assign(config.resolve.alias, {
       '@template-editor/native': resolvePath('../editor/src'),
       '@template-editor/react': resolvePath('./src')
-    })
+    });
     config.module.rules.push({
       test: /\.tsx?$/,
       loader: 'awesome-typescript-loader',
       options: {
         transpileOnly: true,
-        compilerOptions,
-        getCustomTransformers: () => {
-          return {
-            before: [tsImportPluginFactory({
-              libraryDirectory: 'es',
-              libraryName: 'antd',
-              // style: 'css'
-            })]
-          };
-        }
+        compilerOptions
       }
     });
     config.module.rules.push({
@@ -44,8 +35,7 @@ export default {
       }, {
         loader: 'css-loader'
       }]
-    })
-    // require('fs').writeFileSync('./config.js', JSON.stringify(config.module, null, 2));
+    });
     return config;
   }
 }

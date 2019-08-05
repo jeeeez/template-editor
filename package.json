@@ -4,9 +4,8 @@
   "description": "标准的模板编辑器，适用于 短信模板、微信模板 编辑",
   "main": "editor/index.js",
   "scripts": {
-    "bootstrap": "node_modules/.bin/lerna bootstrap",
+    "bootstrap": "node_modules/.bin/lerna bootstrap --ignore-prepublish",
     "docz:dev": "cd packages/react-template-editor && npm run docz:dev",
-    "start": "cd packages/demo && npm start",
     "build:native": "cd packages/editor && npm run build",
     "build:react": "cd packages/react-template-editor && npm run build",
     "build": "npm run build:native && npm run build:react",
