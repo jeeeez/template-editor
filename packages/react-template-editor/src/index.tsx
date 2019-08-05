@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { TemplateEditor } from '@template-editor/native';
-import { IProps, ReactTemplateEditor as IReactTemplateEditor } from './index.d';
+import { IProps, IImperativeHandles } from './index.d';
 
 
-
-export const ReactTemplateEditor: IReactTemplateEditor = React.forwardRef(function ReactTemplateEditor(props: IProps, ref) {
-  const { value = '', placeholders, createReplacementNode, onChange, ...rest } = props;
-  const [editorRef] = React.useState(React.createRef<HTMLDivElement>());
-  // const editorRef = React.useRef<HTMLDivElement>(null);
+const Editor: React.RefForwardingComponent<IImperativeHandles, IProps> = (props, ref) => {
+  const {
+    value = '',
+    disabled,
+    placeholder,
+    placeholders,
+    createReplacementNode,
+    onChange,
+    ...rest } = props;
+  const editorRef = React.useRef<HTMLDivElement>(null);
   const [editor, setEditorInstance] = React.useState<TemplateEditor>();
 
   // componentDidMount
@@ -48,4 +53,6 @@ export const ReactTemplateEditor: IReactTemplateEditor = React.forwardRef(functi
   return (
     <div ref={editorRef} {...rest}></div>
   );
-});
+};
+
+export const ReactTemplateEditor = React.forwardRef(Editor);
