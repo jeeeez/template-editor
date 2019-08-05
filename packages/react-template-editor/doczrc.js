@@ -15,6 +15,7 @@ export default {
   title: '@template-editor/react@' + version,
   menu: [],
   base: '/template-editor/',
+  dest: '../../docs',
   modifyBundlerConfig(config) {
     Object.assign(config.resolve.alias, {
       '@template-editor/native': resolvePath('../editor/src'),
