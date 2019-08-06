@@ -19,6 +19,8 @@ const Editor: React.RefForwardingComponent<IImperativeHandles, IProps> = (props,
   React.useEffect(() => {
     setEditorInstance(new TemplateEditor(editorRef.current!, {
       initialValue: value,
+      disabled,
+      placeholder,
       placeholders,
       createReplacementNode
     }));
@@ -39,6 +41,17 @@ const Editor: React.RefForwardingComponent<IImperativeHandles, IProps> = (props,
     editor && editor.setValue(props.value);
   }, [props.value]);
 
+
+  // when placeholder changed
+  React.useEffect(() => {
+    editor && editor.instance.setOption('placeholder', placeholder);
+  }, [props.placeholder]);
+
+
+  // when disabled changed
+  React.useEffect(() => {
+    editor && editor.instance.setOption('readOnly', disabled);
+  }, [props.disabled]);
 
   // when other props changed, Codemirror need to re-parse
   React.useImperativeHandle(ref, () => ({

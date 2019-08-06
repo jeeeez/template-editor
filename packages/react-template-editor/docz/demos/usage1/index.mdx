@@ -1,13 +1,28 @@
 ---
-name: Usage
+name: Usage 1
+route: /usage-1
 ---
 
-# Usage
+# Usage1
 
 import { Playground } from 'docz';
-import { ReactTemplateEditorWrapper } from './index.tsx';
+import { ReactTemplateEditor } from '@template-editor/react/index.tsx';
 
 
 <Playground>
-  <ReactTemplateEditorWrapper />
+  <ReactTemplateEditor
+    value='Hello {{nickname}}'
+    placeholder='Please input your message'
+    placeholders={[{
+      type: 'variable',
+      matchRegexp: /^\{\{(nickname)\}\}/,
+      className: 'cm-keyword',
+      text: 'Peter'
+    }, {
+      type: 'variable',
+      matchRegexp: /^\{\{(.*)\}\}/,
+      className: 'cm-keyword',
+      text: 'Unknown Variable'
+    }]}
+   />
 </Playground>
