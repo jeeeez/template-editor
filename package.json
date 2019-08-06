@@ -6,6 +6,7 @@
   "scripts": {
     "bootstrap": "node_modules/.bin/lerna bootstrap --ignore-prepublish",
     "docz:dev": "cd packages/react-template-editor && npm run docz:dev",
+    "docz:build": "cd packages/react-template-editor && npm run docz:build",
     "build:native": "cd packages/editor && npm run build",
     "build:react": "cd packages/react-template-editor && npm run build",
     "build": "npm run build:native && npm run build:react",

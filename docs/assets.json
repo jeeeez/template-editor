@@ -1,9 +1,11 @@
 {
-  "vendors.js": "/template-editor/static/js/vendors.54774969.js",
-  "vendors.js.map": "/template-editor/static/js/vendors.76943fd9dd1e497d3e70.js.map",
-  "app.js": "/template-editor/static/js/app.76943fd9dd1e497d3e70.js",
-  "app.js.map": "/template-editor/static/js/app.76943fd9dd1e497d3e70.js.map",
-  "docz-demos-usage1-index.js": "/template-editor/static/js/docz-demos-usage1-index.55085db2.js",
-  "docz-demos-usage1-index.js.map": "/template-editor/static/js/docz-demos-usage1-index.76943fd9dd1e497d3e70.js.map",
+  "vendors.js": "/template-editor/static/js/vendors.4c328c5f.js",
+  "vendors.js.map": "/template-editor/static/js/vendors.8f86d8904df674b5e217.js.map",
+  "app.js": "/template-editor/static/js/app.8f86d8904df674b5e217.js",
+  "app.js.map": "/template-editor/static/js/app.8f86d8904df674b5e217.js.map",
+  "docz-demos-usage1-index.js": "/template-editor/static/js/docz-demos-usage1-index.1411e021.js",
+  "docz-demos-usage1-index.js.map": "/template-editor/static/js/docz-demos-usage1-index.8f86d8904df674b5e217.js.map",
+  "docz-demos-usage2-index.js": "/template-editor/static/js/docz-demos-usage2-index.47df2eb7.js",
+  "docz-demos-usage2-index.js.map": "/template-editor/static/js/docz-demos-usage2-index.8f86d8904df674b5e217.js.map",
   "index.html": "/template-editor/index.html"
 }
