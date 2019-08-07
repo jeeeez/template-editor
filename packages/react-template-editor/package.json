@@ -10,7 +10,7 @@
   },
   "scripts": {
     "docz:dev": "docz dev",
-    "docz:build": "docz build",
+    "docz:build": "docz build && cp ../../CNAME ../../docs",
     "build": "rm -rf dist/ && ../../node_modules/.bin/rollup -c rollup/config.js",
     "prepublish2": "npm run build"
   },
