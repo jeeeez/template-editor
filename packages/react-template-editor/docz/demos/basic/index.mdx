@@ -1,0 +1,37 @@
+---
+name: basic
+route: /usage/basic
+menu: usage demos
+---
+
+# Basic Usage
+
+import { Playground } from 'docz';
+import { ReactTemplateEditor } from '@template-editor/react';
+
+You can set `disabled` as `true` if you want
+
+
+<Playground>
+  <ReactTemplateEditor
+    disabled={false}
+    value='Hello {{nickname}}\nToday is {{datetime}}\nThis is an {{unknown keyword}}\n'
+    placeholder='Please input your message'
+    placeholders={[{
+      type: 'variable',
+      matchRegexp: /^\{\{(nickname)\}\}/,
+      className: 'cm-keyword',
+      text: 'Peter'
+    }, {
+      type: 'variable',
+      matchRegexp: /^\{\{(datetime)\}\}/,
+      className: 'cm-keyword',
+      text: new Date().toString()
+    }, {
+      type: 'variable',
+      matchRegexp: /^\{\{(.*)\}\}/,
+      className: 'cm-error',
+      text: 'Unknown Variable'
+    }]}
+   />
+</Playground>

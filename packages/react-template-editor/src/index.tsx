@@ -6,6 +6,7 @@ import { IProps, IImperativeHandles } from './index.d';
 const Editor: React.RefForwardingComponent<IImperativeHandles, IProps> = (props, ref) => {
   const {
     value = '',
+    style,
     disabled,
     placeholder,
     placeholders,
@@ -50,7 +51,7 @@ const Editor: React.RefForwardingComponent<IImperativeHandles, IProps> = (props,
 
   // when disabled changed
   React.useEffect(() => {
-    editor && editor.instance.setOption('readOnly', disabled);
+    editor && editor.instance.setOption('readOnly', disabled ? 'nocursor' : false);
   }, [props.disabled]);
 
   // when other props changed, Codemirror need to re-parse
@@ -64,7 +65,7 @@ const Editor: React.RefForwardingComponent<IImperativeHandles, IProps> = (props,
   }));
 
   return (
-    <div ref={editorRef} {...rest}></div>
+    <div ref={editorRef} style={{ border: '1px solid #d9d9d9', borderRadius: 2, ...style }} {...rest}></div>
   );
 };
 
