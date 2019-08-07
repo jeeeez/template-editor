@@ -1,13 +1,13 @@
 {
   "vendors.js": "/template-editor/static/js/vendors.861f2124.js",
-  "vendors.js.map": "/template-editor/static/js/vendors.55569ec89d5e06d1640d.js.map",
-  "app.js": "/template-editor/static/js/app.55569ec89d5e06d1640d.js",
-  "app.js.map": "/template-editor/static/js/app.55569ec89d5e06d1640d.js.map",
+  "vendors.js.map": "/template-editor/static/js/vendors.8a126727911899a528bc.js.map",
+  "app.js": "/template-editor/static/js/app.8a126727911899a528bc.js",
+  "app.js.map": "/template-editor/static/js/app.8a126727911899a528bc.js.map",
   "docz-demos-basic-index.js": "/template-editor/static/js/docz-demos-basic-index.dad44043.js",
-  "docz-demos-basic-index.js.map": "/template-editor/static/js/docz-demos-basic-index.55569ec89d5e06d1640d.js.map",
+  "docz-demos-basic-index.js.map": "/template-editor/static/js/docz-demos-basic-index.8a126727911899a528bc.js.map",
   "docz-demos-create-replacement-node-index.js": "/template-editor/static/js/docz-demos-create-replacement-node-index.7c4c0af0.js",
-  "docz-demos-create-replacement-node-index.js.map": "/template-editor/static/js/docz-demos-create-replacement-node-index.55569ec89d5e06d1640d.js.map",
+  "docz-demos-create-replacement-node-index.js.map": "/template-editor/static/js/docz-demos-create-replacement-node-index.8a126727911899a528bc.js.map",
   "docz-introduction.js": "/template-editor/static/js/docz-introduction.2ee3735c.js",
-  "docz-introduction.js.map": "/template-editor/static/js/docz-introduction.55569ec89d5e06d1640d.js.map",
+  "docz-introduction.js.map": "/template-editor/static/js/docz-introduction.8a126727911899a528bc.js.map",
   "index.html": "/template-editor/index.html"
 }
