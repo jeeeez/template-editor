@@ -10,8 +10,7 @@
   },
   "scripts": {
     "build": "rm -rf dist/ && ../../node_modules/.bin/rollup -c rollup/config.js",
-    "publishToNPM": "node ./scripts/publish.js",
-    "prepublish": "npm run build"
+    "prepublish2": "npm run build"
   },
   "dependencies": {
     "@types/codemirror": "0.0.75",
@@ -23,5 +22,5 @@
   },
   "author": "Jeezlee",
   "license": "MIT",
-  "gitHead": "fcb7d94143b30f99f33e150f92b5a2e09247a1b6"
+  "gitHead": "a94db663c9e737e0ffe7c1cffc84af097debccff"
 }
