@@ -1,0 +1,73 @@
+---
+name: Introduction
+route: /
+---
+
+
+import { Playground, Props } from 'docz';
+import { ReactTemplateEditor } from '@template-editor/react';
+
+# Introduction
+
+`ReactTemplateEditor` is a `React` component of `TemplateEditor(@template-editor/native)`,<br />
+It's a `CodeMirror` based template editor usually used as `message editor` or `wechat message editor`.
+
+Unfortunately this is not a strictly controlled component, but we are trying to improve it.
+
+
+## Install
+
+```bash
+npm i @template-editor/react
+# or
+yarn add @template-editor/react
+```
+
+Then use it in your code...
+
+```javascript
+import { ReactTemplateEditor } from '@template-editor/react';
+
+<ReactTemplateEditor
+  value=''
+  placeholder='',
+  placeholders={[] as IPlaceholder[]}
+/>
+
+```
+
+## Props
+<Props of={ReactTemplateEditor} />
+
+
+
+## Type Definitions
+
+### IPlaceholder
+
+```typescript
+interface IPlaceholder {
+  matchRegexp: RegExp;
+  consumeRegexp?: RegExp; // default to matchRegexp
+  type: string; // value of CodeMirror.Token.type
+  text?: string | ((v: string) => string); // display text of this placeholder
+  className?: string;
+}
+```
+
+
+### IEditorOptions
+The second argument of `TemplateEditor`
+
+```typescript
+interface IEditorOptions {
+  initialValue: string;
+  placeholders: IPlaceholder[];
+  lineWrapping?: boolean;
+  createReplacementNode?(
+    placeholder: IPlaceholder,
+    value?: string, // the real Value of the matched Placeholder. `matchRegexp(input)[1]`
+    input?: string // consumed string of the Placeholder
+  ): HTMLSpanElement;
+}
+```

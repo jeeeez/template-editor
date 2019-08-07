@@ -1,0 +1,45 @@
+---
+name: createReplacementNode
+route: /usage/createReplacementNode
+menu: usage demos
+---
+
+# Custom createReplacementNode
+
+import { Playground } from 'docz';
+import { ReactTemplateEditor } from '@template-editor/react';
+
+
+Click the variables below, you can addEventListener on the `span` which create by the custom `createReplacementNode` function
+
+<Playground>
+  <ReactTemplateEditor
+    value='Hello {{nickname}}\nToday is {{datetime}}\nThis is an {{unknown variable}}\n'
+    placeholder='Please input your message'
+    placeholders={[{
+      type: 'variable',
+      matchRegexp: /^\{\{(nickname)\}\}/,
+      className: 'cm-keyword',
+      text: 'Peter'
+    }, {
+      type: 'variable',
+      matchRegexp: /^\{\{(datetime)\}\}/,
+      className: 'cm-keyword',
+      text: new Date().toString()
+    }, {
+      type: 'unknown-variable',
+      matchRegexp: /^\{\{(.*)\}\}/,
+      className: 'cm-error',
+      text: 'Unknown Variable'
+    }]}
+    createReplacementNode={(placeholder) => {
+      const span = document.createElement('span');
+      span.innerText = placeholder.text;
+      span.classList.add(placeholder.className);
+      span.addEventListener('click', () => {
+        window.alert(placeholder.text);
+      });
+      return span;
+    }}
+   />
+</Playground>

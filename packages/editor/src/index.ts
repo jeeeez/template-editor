@@ -2,6 +2,7 @@ import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
 require('codemirror/addon/scroll/simplescrollbars');
 import 'codemirror/addon/scroll/simplescrollbars.css';
+require('codemirror/addon/display/placeholder');
 import { defineMode } from './mode';
 import { IEditorOptions } from './index.d';
 import { createSpanReplacementNode } from './createSpanReplacementNode';
@@ -21,11 +22,14 @@ export class TemplateEditor {
 
     const lineWrapping = 'lineWrapping' in options ? !!options.lineWrapping : true;
 
+
     this.instance = CodeMirror(container, {
       mode,
       lineWrapping,
       scrollbarStyle: 'simple',
-      value: options.initialValue || ''
+      readOnly: options.disabled ? 'nocursor' : false,
+      value: options.initialValue || '',
+      placeholder: options.placeholder
     });
 
 

@@ -11,8 +11,10 @@ export interface IPlaceholder {
 
 export interface IEditorOptions {
   initialValue: string;
+  placeholder?: string;
   placeholders: IPlaceholder[];
   lineWrapping?: boolean;
+  disabled?: boolean;
   createReplacementNode?(placeholder: IPlaceholder, value?: string, input?: string): HTMLSpanElement;
 }
 

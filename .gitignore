@@ -6,3 +6,8 @@ node_modules/
 dist/
 
 .history/
+
+*.log
+.docz
+
+*.lerna_backup

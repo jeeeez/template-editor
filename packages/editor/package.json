@@ -1,14 +1,27 @@
 {
   "name": "@template-editor/native",
-  "version": "0.0.1",
+  "version": "0.2.3",
   "description": "template-editor implemention in React",
   "main": "es/index.js",
+  "module": "es/index.js",
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
   "scripts": {
-    "build": "rm -rf dist/ && rollup -c rollup/config.js",
-    "publishToNPM": "node ./scripts/publish.js"
+    "build": "rm -rf dist/ && ../../node_modules/.bin/rollup -c rollup/config.js",
+    "publishToNPM": "node ./scripts/publish.js",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "@types/codemirror": "0.0.75",
     "codemirror": "^5.48.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jeezlee/template-editor/tree/master/packages/editor"
+  },
+  "author": "Jeezlee",
+  "license": "MIT",
+  "gitHead": "fcb7d94143b30f99f33e150f92b5a2e09247a1b6"
 }
