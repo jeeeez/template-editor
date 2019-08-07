@@ -14,7 +14,7 @@ export default {
   typescript: true,
   title: '@template-editor/react@' + version,
   menu: [],
-  base: '/template-editor/',
+  base: '/',
   dest: '../../docs',
   modifyBundlerConfig(config) {
     Object.assign(config.resolve.alias, {
