@@ -1,6 +1,6 @@
 {
   "name": "@template-editor/native",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "template-editor implemention in React",
   "main": "es/index.js",
   "module": "es/index.js",
